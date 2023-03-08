@@ -1,6 +1,6 @@
 FROM SuzuneHorikita/python:latest
 
-WORKDIR /src
+WORKDIR /src/
 RUN chmod 777 /src
 
 # Installing Requirements
