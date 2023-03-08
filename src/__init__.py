@@ -87,6 +87,7 @@ async def load_SUDO():
     global SUDO
     log.info("Loading SUDO")
     SUDOdb = db.SUDO
+    SUDO = set()
     SUDO = await SUDOdb.find_one({"sudo": "sudo"})
     SUDO = [] if not SUDO else SUDO["SUDO"]
     for user_id in SUDO_USERS_ID:
