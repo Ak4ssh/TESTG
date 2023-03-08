@@ -100,7 +100,7 @@ async def load_SUDO():
             )
     if SUDO:
         for user_id in SUDO:
-            SUDO.add(user_id)
+            SUDO.append(user_id)
 
 
 loop = asyncio.get_event_loop()
