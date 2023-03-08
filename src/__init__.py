@@ -24,8 +24,8 @@ SOFTWARE.
 import asyncio
 import time
 from inspect import getfullargspec
-from os import path
-
+from os import path, getenv
+import os
 from aiohttp import ClientSession
 from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 from pyrogram import Client, filters
@@ -34,18 +34,23 @@ from pyromod import listen
 from Python_ARQ import ARQ
 from telegraph import Telegraph
 
-is_config = path.exists("config.py")
-
-if is_config:
-    from config import *
-else:
-    from sample_config import *
-
-USERBOT_PREFIX = USERBOT_PREFIX
-GBAN_LOG_GROUP_ID = GBAN_LOG_GROUP_ID
-WELCOME_DELAY_KICK_SEC = WELCOME_DELAY_KICK_SEC
-LOG_GROUP_ID = LOG_GROUP_ID
-MESSAGE_DUMP_CHAT = MESSAGE_DUMP_CHAT
+BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
+API_ID = os.environ.get("API_ID", None)
+SESSION_STRING = os.environ.get("SESSION_STRING", None)
+API_HASH = os.environ.get("API_HASH", None)
+USERBOT_PREFIX = os.environ.get("USERBOT_PREFIX", None)
+PHONE_NUMBER = "+916969696969"
+SUDO_USERS_ID = {int(x) for x in os.environ.get("SUDO_USERS_ID", "").split()}
+LOG_GROUP_ID = os.environ.get("LOG_GROUP_ID", None)
+GBAN_LOG_GROUP_ID = os.environ.get("GBAN_LOG_GROUP_ID", None)
+MESSAGE_DUMP_CHAT = os.environ.get("MESSAGE_DUMP_CHAT", None)
+WELCOME_DELAY_KICK_SEC = int(getenv("WELCOME_DELAY_KICK_SEC", "300"))
+MONGO_URL = os.environ.get("MONGO_URL", "Suzune")
+ARQ_API_KEY = os.environ.get("ARQ_API_KEY", "BCYKVF-KYQWFM-JCMORU-RZWOFQ-ARQ")
+ARQ_API_URL = os.environ.get("ARQ_API_URL", "https://arq.hamker.in")
+LOG_MENTIONS = os.environ.get("LOG_MENTIONS", None)
+RSS_DELAY = int(getenv("RSS_DELAY", "300"))
+PM_PERMIT = os.environ.get("PM_PERMIT", "True")
 MOD_LOAD = []
 MOD_NOLOAD = []
 SUDO = filters.user()
